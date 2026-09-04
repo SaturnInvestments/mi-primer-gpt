@@ -1,0 +1,892 @@
+Desarrollemos la propuesta completa. Te entregaré **todos los elementos** que necesitas para que el editor pueda ver el proyecto en su totalidad: desde la estructura del repositorio hasta el código del notebook y los corpus.
+
+---
+
+## 📦 REPOSITORIO COMPLETO: "Mi Primer GPT"
+
+### Estructura del repositorio
+
+```
+mi-primer-gpt/
+│
+├── README.md                          # Explicación principal del proyecto
+│
+├── notebooks/
+│   └── Mi_primer_GPT.ipynb            # Notebook principal de Colab
+│
+├── corpus/
+│   ├── README.md                      # Explicación de los corpus
+│   ├── quijote.txt                    # Don Quijote de la Mancha (completo)
+│   ├── montecristo.txt                # El Conde de Montecristo (completo)
+│   └── prueba.txt                     # Texto corto de prueba (~2000 caracteres)
+│
+├── requirements.txt                   # Dependencias para ejecución local
+└── LICENSE                            # Licencia MIT
+```
+
+---
+
+## 📄 README.md (archivo principal del repositorio)
+
+```markdown
+# 🤖 Mi Primer GPT — Entrena tu propia IA con los clásicos de la literatura
+
+> *"No necesitas un superordenador para entender cómo funciona ChatGPT. Solo necesitas un poco de curiosidad, un texto clásico y Google Colab."*
+
+Este repositorio te guiará paso a paso en la construcción de tu propio modelo de lenguaje desde cero. No es una demo ni una simulación: es **la misma arquitectura Transformer** que usan GPT-3, GPT-4 y ChatGPT, pero reducida a su mínima expresión para que puedas entrenarla en tu navegador, gratis y sin instalar nada.
+
+---
+
+## 🎯 ¿Qué vas a construir?
+
+Vas a crear un **modelo de lenguaje autoregresivo** (igual que ChatGPT) que aprende a predecir la siguiente letra basándose en las anteriores. Al final del entrenamiento, podrás **chatear con él** en la consola y ver cómo responde en el estilo del libro que eligiste.
+
+---
+
+## 📚 Los corpus: los clásicos que darán vida a tu IA
+
+| Corpus | Autor | Tamaño | Estilo |
+|--------|-------|--------|--------|
+| **Don Quijote de la Mancha** | Miguel de Cervantes | ~2.1 MB | Español del Siglo de Oro, narrativa, diálogos |
+| **El Conde de Montecristo** | Alexandre Dumas | ~1.5 MB | Español del siglo XIX, aventura, diálogos |
+| **Prueba** | — | ~2.000 caracteres | Para pruebas rápidas |
+
+Todos los corpus están en **dominio público** y son de descarga gratuita.
+
+---
+
+## 🚀 ¿Cómo funciona?
+
+El proyecto se ejecuta completamente en **Google Colab**, un entorno de notebooks gratuito que proporciona una GPU para acelerar el entrenamiento.
+
+### Flujo de trabajo:
+
+1. **Preparación del texto** → El corpus se convierte en números (tokenización a nivel de carácter).
+2. **Construcción del modelo** → Se ensambla un Transformer diminuto con atención multi-cabeza.
+3. **Entrenamiento** → El modelo aprende a predecir la siguiente letra. Verás cómo la "pérdida" (error) disminuye en tiempo real.
+4. **Generación** → El modelo genera texto letra a letra en el estilo del corpus.
+5. **Conversación** → Escribe un prompt y el modelo continuará en el estilo que aprendió.
+
+---
+
+## ⏱️ Tiempos estimados
+
+| Fase | Tiempo (GPU Colab) | Tiempo (CPU) |
+|------|-------------------|--------------|
+| Preparación | < 1 min | < 1 min |
+| Entrenamiento (Quijote, modelo pequeño) | 8-12 min | 30-45 min |
+| Entrenamiento (Quijote, modelo mediano) | 20-30 min | 2-3 horas |
+| Generación / Conversación | Instantáneo | Instantáneo |
+
+> 💡 **Recomendación:** Usa la GPU gratuita de Colab (Runtime → Change runtime type → GPU). Es gratis y acelera el entrenamiento 5-10 veces.
+
+---
+
+## 📖 Para estudiantes
+
+Este proyecto está diseñado para que aprendas **haciendo**. Cada celda del notebook incluye explicaciones detalladas en español que conectan el código con la teoría del capítulo:
+
+- ¿Qué es un token y por qué necesitamos tokenizar?
+- ¿Cómo funciona la atención multi-cabeza?
+- ¿Qué son los embeddings posicionales?
+- ¿Cómo aprende un modelo durante el entrenamiento?
+- ¿Qué es la temperatura y cómo afecta a la creatividad?
+
+---
+
+## 👨‍🏫 Para docentes
+
+Este notebook puede usarse como:
+
+- **Laboratorio práctico** en una clase sobre Transformers o NLP.
+- **Tarea asignada** para que los estudiantes experimenten con diferentes corpus e hiperparámetros.
+- **Demostración en vivo** en el aula para mostrar cómo aprende una red neuronal.
+- **Proyecto final** para que los estudiantes modifiquen el código y exploren variantes.
+
+---
+
+## 🔧 Requisitos
+
+- Una cuenta de Google (gratuita)
+- Un navegador web
+- ¡Curiosidad!
+
+**No necesitas instalar nada en tu computadora.**
+
+---
+
+## 📂 Estructura del repositorio
+
+```
+mi-primer-gpt/
+├── README.md                    # Este archivo
+├── notebooks/
+│   └── Mi_primer_GPT.ipynb      # Notebook principal
+├── corpus/
+│   ├── quijote.txt              # Don Quijote completo
+│   ├── montecristo.txt          # El Conde de Montecristo completo
+│   └── prueba.txt               # Texto de prueba
+├── requirements.txt             # Dependencias (solo para ejecución local)
+└── LICENSE                      # MIT License
+```
+
+---
+
+## 🏁 ¡Empecemos!
+
+1. Haz clic en el enlace de abajo para abrir el notebook en Google Colab:
+   **[📓 Abrir en Google Colab](https://colab.research.google.com/github/tu-usuario/mi-primer-gpt/blob/main/notebooks/Mi_primer_GPT.ipynb)**
+
+2. Selecciona **Runtime → Change runtime type → GPU** (recomendado).
+
+3. Ejecuta las celdas en orden (Shift+Enter).
+
+4. ¡Observa cómo tu modelo aprende a escribir como Cervantes o Dumas!
+
+---
+
+## 📚 Lecturas recomendadas
+
+- El capítulo 3 de *Historia de la Inteligencia Artificial y el Dataverso*, donde se explica la teoría detrás de este código.
+- El paper original: ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) (Vaswani et al., 2017).
+- El repositorio [nanoGPT](https://github.com/karpathy/nanoGPT) de Andrej Karpathy, que inspiró este proyecto.
+
+---
+
+## 📄 Licencia
+
+MIT License — puedes usar, modificar y compartir este código libremente.
+
+---
+
+**¡Feliz entrenamiento!** 🚀
+```
+
+---
+
+## 📓 Notebook: `Mi_primer_GPT.ipynb`
+
+A continuación, el contenido completo del notebook. Está diseñado para ejecutarse de principio a fin en Google Colab.
+
+```markdown
+# 🤖 Mi Primer GPT — Entrena tu propia IA desde cero
+
+> *"No es magia. Es matemáticas, atención y muchos clásicos de la literatura."*
+
+Bienvenido a **Mi Primer GPT**. En este notebook vas a construir un modelo de lenguaje autoregresivo (igual que ChatGPT) desde cero, usando **PyTorch** y **Google Colab**.
+
+Lo vas a entrenar con un corpus literario en español —*Don Quijote de la Mancha* o *El Conde de Montecristo*— y al final podrás **chatear con él** en la consola.
+
+---
+
+## 🎯 Objetivos de aprendizaje
+
+Al completar este notebook, podrás:
+
+- Explicar qué es la tokenización a nivel de carácter y cómo se convierte texto en números.
+- Implementar un bloque Transformer con atención multi-cabeza causal.
+- Entrenar un modelo de lenguaje con pérdida de entropía cruzada (*next-token prediction*).
+- Visualizar la curva de pérdida y entender qué significa.
+- Generar texto de forma autoregresiva y ajustar la creatividad con la **temperatura**.
+
+---
+
+## ⚙️ Configuración inicial
+
+Ejecuta esta celda para importar las bibliotecas necesarias y detectar si tienes GPU disponible.
+```
+
+```python
+# Celda 1: Importar bibliotecas y configuración
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import matplotlib.pyplot as plt
+import requests
+import os
+import numpy as np
+from typing import Optional
+
+# Detectar GPU
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(f"🔍 Dispositivo detectado: {device}")
+if device.type == "cuda":
+    print(f"   GPU: {torch.cuda.get_device_name(0)}")
+else:
+    print("   💡 Para acelerar, ve a Runtime → Change runtime type → GPU")
+
+# Semilla para reproducibilidad
+torch.manual_seed(42)
+np.random.seed(42)
+```
+
+```markdown
+## 📚 1. Elige y carga tu corpus
+
+El modelo aprenderá el estilo del texto que le des. Tienes tres opciones:
+
+| Corpus | Estilo | Tamaño |
+|--------|--------|--------|
+| **El Quijote** | Español del Siglo de Oro, narrativa, diálogos | ~2.1 MB |
+| **El Conde de Montecristo** | Español del siglo XIX, aventura | ~1.5 MB |
+| **Prueba** | Texto corto para pruebas rápidas | ~2.000 caracteres |
+
+Elige uno modificando la variable `corpus_seleccionado` abajo.
+```
+
+```python
+# Celda 2: Seleccionar y cargar corpus
+# Cambia este valor: "quijote", "montecristo" o "prueba"
+corpus_seleccionado = "quijote"  # <-- CAMBIA AQUÍ
+
+# URLs de los corpus (almacenados en el repositorio)
+urls = {
+    "quijote": "https://raw.githubusercontent.com/tu-usuario/mi-primer-gpt/main/corpus/quijote.txt",
+    "montecristo": "https://raw.githubusercontent.com/tu-usuario/mi-primer-gpt/main/corpus/montecristo.txt",
+    "prueba": "https://raw.githubusercontent.com/tu-usuario/mi-primer-gpt/main/corpus/prueba.txt"
+}
+
+# Descargar y cargar el texto
+url = urls[corpus_seleccionado]
+response = requests.get(url)
+texto = response.text
+
+# Limpiar el texto (opcional: eliminar caracteres no imprimibles)
+texto = ''.join(c for c in texto if c.isprintable() or c == '\n')
+
+print(f"📖 Corpus cargado: {corpus_seleccionado}")
+print(f"📏 Longitud del texto: {len(texto):,} caracteres")
+print("\n📝 Primeros 500 caracteres:")
+print("-" * 50)
+print(texto[:500])
+print("-" * 50)
+```
+
+```markdown
+### 🔍 Tokenización a nivel de carácter
+
+A diferencia de ChatGPT (que usa subpalabras), nosotros tokenizaremos **carácter por carácter**. Es más simple de entender y perfecto para este propósito educativo.
+
+**¿Qué hacemos?**
+1. Creamos un vocabulario con todos los caracteres únicos del texto.
+2. Asignamos un número (índice) a cada carácter.
+3. Convertimos el texto completo en una secuencia de números.
+```
+
+```python
+# Celda 3: Tokenización
+# Crear vocabulario
+chars = sorted(list(set(texto)))
+vocab_size = len(chars)
+print(f"🔤 Tamaño del vocabulario: {vocab_size} caracteres")
+print(f"   Primeros 20 caracteres: {''.join(chars[:20])}")
+
+# Mapeos: carácter → índice e índice → carácter
+stoi = {ch: i for i, ch in enumerate(chars)}
+itos = {i: ch for i, ch in enumerate(chars)}
+
+# Función de encode/decode
+def encode(s):
+    return [stoi[c] for c in s]
+
+def decode(l):
+    return ''.join([itos[i] for i in l])
+
+# Convertir todo el texto a números
+data = torch.tensor(encode(texto), dtype=torch.long)
+print(f"📊 Datos convertidos: {len(data):,} tokens")
+```
+
+```markdown
+### 📊 División: entrenamiento vs. validación
+
+Separamos el texto en dos partes:
+- **90%** para entrenamiento (el modelo aprende de aquí)
+- **10%** para validación (medimos qué tan bien generaliza)
+
+Esto nos permite detectar si el modelo está **memorizando** en lugar de **aprendiendo**.
+```
+
+```python
+# Celda 4: División train/val
+n = int(0.9 * len(data))
+train_data = data[:n]
+val_data = data[n:]
+
+print(f"📚 Entrenamiento: {len(train_data):,} caracteres")
+print(f"📖 Validación:   {len(val_data):,} caracteres")
+```
+
+```markdown
+## 🧠 2. El modelo: un Transformer en miniatura
+
+Vamos a construir un **decodificador Transformer** (la misma arquitectura que GPT). Nuestro modelo tendrá:
+
+- **Embeddings** (posicionales + de token)
+- **Bloques Transformer** con atención multi-cabeza causal
+- **Capa final** que predice la siguiente letra
+
+### 📐 Hiperparámetros del modelo
+
+Puedes ajustarlos para experimentar:
+- `block_size`: cuántos caracteres "ve" el modelo a la vez (contexto)
+- `n_embd`: dimensión de los embeddings
+- `n_head`: número de cabezas de atención
+- `n_layer`: número de bloques Transformer
+```
+
+```python
+# Celda 5: Definir hiperparámetros
+# Parámetros del modelo
+block_size = 128      # Contexto: cuántos caracteres usa para predecir el siguiente
+n_embd = 128          # Dimensión de los embeddings
+n_head = 4            # Número de cabezas de atención
+n_layer = 4           # Número de bloques Transformer
+dropout = 0.1         # Dropout para regularización
+
+print("📐 Configuración del modelo:")
+print(f"   Contexto (block_size): {block_size}")
+print(f"   Embeddings (n_embd):   {n_embd}")
+print(f"   Cabezas de atención:   {n_head}")
+print(f"   Capas Transformer:     {n_layer}")
+print(f"   Dropout:               {dropout}")
+```
+
+```markdown
+### 🔧 Definición de la arquitectura
+
+Aquí definimos el modelo paso a paso. Cada componente está explicado en el código.
+```
+
+```python
+# Celda 6: Definir el modelo
+
+class CausalSelfAttention(nn.Module):
+    """Atención multi-cabeza con máscara causal (solo mira hacia atrás)"""
+    def __init__(self, n_embd, n_head, block_size, dropout):
+        super().__init__()
+        assert n_embd % n_head == 0
+        self.n_head = n_head
+        self.n_embd = n_embd
+        self.head_size = n_embd // n_head
+        
+        # Proyecciones Q, K, V
+        self.query = nn.Linear(n_embd, n_embd, bias=False)
+        self.key = nn.Linear(n_embd, n_embd, bias=False)
+        self.value = nn.Linear(n_embd, n_embd, bias=False)
+        
+        # Proyección de salida
+        self.proj = nn.Linear(n_embd, n_embd)
+        
+        # Dropout
+        self.dropout = nn.Dropout(dropout)
+        
+        # Máscara causal (triangular superior)
+        self.register_buffer("mask", torch.tril(torch.ones(block_size, block_size))
+                                     .view(1, 1, block_size, block_size))
+    
+    def forward(self, x):
+        B, T, C = x.shape  # batch, tiempo, canales
+        
+        # Calcular Q, K, V
+        q = self.query(x).view(B, T, self.n_head, self.head_size).transpose(1, 2)
+        k = self.key(x).view(B, T, self.n_head, self.head_size).transpose(1, 2)
+        v = self.value(x).view(B, T, self.n_head, self.head_size).transpose(1, 2)
+        
+        # Atención: Q * K^T / sqrt(head_size)
+        att = (q @ k.transpose(-2, -1)) * (1.0 / (self.head_size ** 0.5))
+        att = att.masked_fill(self.mask[:,:,:T,:T] == 0, float('-inf'))
+        att = F.softmax(att, dim=-1)
+        att = self.dropout(att)
+        
+        # Aplicar atención a V
+        y = (att @ v).transpose(1, 2).contiguous().view(B, T, C)
+        y = self.proj(y)
+        return y
+
+
+class FeedForward(nn.Module):
+    """Red feed-forward de dos capas"""
+    def __init__(self, n_embd, dropout):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(n_embd, 4 * n_embd),
+            nn.GELU(),
+            nn.Linear(4 * n_embd, n_embd),
+            nn.Dropout(dropout)
+        )
+    
+    def forward(self, x):
+        return self.net(x)
+
+
+class TransformerBlock(nn.Module):
+    """Un bloque Transformer: atención + feed-forward con residuales y layer norm"""
+    def __init__(self, n_embd, n_head, block_size, dropout):
+        super().__init__()
+        self.ln1 = nn.LayerNorm(n_embd)
+        self.attn = CausalSelfAttention(n_embd, n_head, block_size, dropout)
+        self.ln2 = nn.LayerNorm(n_embd)
+        self.ffwd = FeedForward(n_embd, dropout)
+    
+    def forward(self, x):
+        x = x + self.attn(self.ln1(x))
+        x = x + self.ffwd(self.ln2(x))
+        return x
+
+
+class MiniGPT(nn.Module):
+    """Mini GPT completo"""
+    def __init__(self, vocab_size, n_embd, n_head, n_layer, block_size, dropout):
+        super().__init__()
+        self.block_size = block_size
+        
+        # Embeddings
+        self.token_embedding = nn.Embedding(vocab_size, n_embd)
+        self.position_embedding = nn.Embedding(block_size, n_embd)
+        
+        # Bloques Transformer
+        self.blocks = nn.Sequential(*[
+            TransformerBlock(n_embd, n_head, block_size, dropout)
+            for _ in range(n_layer)
+        ])
+        
+        # Capa final
+        self.ln_f = nn.LayerNorm(n_embd)
+        self.lm_head = nn.Linear(n_embd, vocab_size)
+    
+    def forward(self, idx):
+        B, T = idx.shape
+        
+        # Embeddings de token + posición
+        tok_emb = self.token_embedding(idx)
+        pos_emb = self.position_embedding(torch.arange(T, device=idx.device))
+        x = tok_emb + pos_emb
+        
+        # Bloques Transformer
+        x = self.blocks(x)
+        
+        # Capa final
+        x = self.ln_f(x)
+        logits = self.lm_head(x)
+        
+        return logits
+    
+    def generate(self, idx, max_new_tokens, temperature=1.0):
+        """Genera texto autoregresivamente"""
+        for _ in range(max_new_tokens):
+            # Recortar al contexto disponible
+            idx_cond = idx[:, -self.block_size:]
+            
+            # Obtener predicciones
+            logits = self(idx_cond)
+            logits = logits[:, -1, :] / temperature
+            probs = F.softmax(logits, dim=-1)
+            
+            # Muestrear el siguiente token
+            idx_next = torch.multinomial(probs, num_samples=1)
+            idx = torch.cat((idx, idx_next), dim=1)
+        
+        return idx
+
+
+# Instanciar el modelo
+model = MiniGPT(
+    vocab_size=vocab_size,
+    n_embd=n_embd,
+    n_head=n_head,
+    n_layer=n_layer,
+    block_size=block_size,
+    dropout=dropout
+).to(device)
+
+# Contar parámetros
+n_params = sum(p.numel() for p in model.parameters())
+print(f"🧠 Modelo creado con {n_params:,} parámetros")
+print(f"   (GPT-3 tiene 175,000,000,000 parámetros — ¡este es {n_params/175e9:.2%} del tamaño!)")
+```
+
+```markdown
+## 🎯 3. Entrenamiento
+
+Ahora viene la parte mágica: el modelo va a aprender a predecir la siguiente letra.
+
+### ¿Cómo funciona el entrenamiento?
+
+1. Tomamos un bloque de texto (ej. 128 caracteres).
+2. Le pedimos al modelo que prediga el siguiente carácter para cada posición.
+3. Comparamos sus predicciones con el texto real.
+4. Ajustamos los pesos del modelo para reducir el error.
+5. Repetimos miles de veces.
+
+Verás cómo la **pérdida** (error) disminuye con el tiempo.
+```
+
+```python
+# Celda 7: Función para obtener batches
+def get_batch(split):
+    """Obtiene un lote de datos de entrenamiento o validación"""
+    data = train_data if split == 'train' else val_data
+    ix = torch.randint(len(data) - block_size, (batch_size,))
+    x = torch.stack([data[i:i+block_size] for i in ix])
+    y = torch.stack([data[i+1:i+block_size+1] for i in ix])
+    return x.to(device), y.to(device)
+
+
+# Celda 8: Entrenamiento
+# Hiperparámetros de entrenamiento
+batch_size = 64
+learning_rate = 3e-4
+max_iters = 5000
+eval_interval = 500
+eval_iters = 200
+
+# Optimizador
+optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+
+# Listas para guardar la pérdida
+train_losses = []
+val_losses = []
+
+print("🚀 ¡Comienza el entrenamiento!")
+print(f"   Iteraciones: {max_iters}")
+print(f"   Tamaño de lote: {batch_size}")
+print("-" * 50)
+
+@torch.no_grad()
+def estimate_loss():
+    """Evalúa la pérdida en entrenamiento y validación"""
+    out = {}
+    model.eval()
+    for split in ['train', 'val']:
+        losses = torch.zeros(eval_iters)
+        for k in range(eval_iters):
+            X, Y = get_batch(split)
+            logits = model(X)
+            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), Y.view(-1))
+            losses[k] = loss.item()
+        out[split] = losses.mean()
+    model.train()
+    return out
+
+# Bucle de entrenamiento
+for iter in range(max_iters):
+    # Evaluar cada eval_interval
+    if iter % eval_interval == 0 or iter == max_iters - 1:
+        losses = estimate_loss()
+        train_losses.append(losses['train'])
+        val_losses.append(losses['val'])
+        print(f"Iter {iter:4d} | Train Loss: {losses['train']:.4f} | Val Loss: {losses['val']:.4f}")
+    
+    # Paso de entrenamiento
+    X, Y = get_batch('train')
+    logits = model(X)
+    loss = F.cross_entropy(logits.view(-1, logits.size(-1)), Y.view(-1))
+    
+    optimizer.zero_grad(set_to_none=True)
+    loss.backward()
+    optimizer.step()
+
+print("-" * 50)
+print("✅ ¡Entrenamiento completado!")
+```
+
+```markdown
+### 📈 Visualización de la pérdida
+
+La curva de pérdida te muestra cómo el modelo está aprendiendo:
+- **Train Loss**: error en los datos que está viendo.
+- **Val Loss**: error en datos que NO ha visto (mide la capacidad de generalizar).
+
+Si ambas bajan, ¡el modelo está aprendiendo bien!
+```
+
+```python
+# Celda 9: Graficar la pérdida
+plt.figure(figsize=(10, 5))
+plt.plot(train_losses, label='Train Loss')
+plt.plot(val_losses, label='Val Loss')
+plt.xlabel('Iteración (cada 500)')
+plt.ylabel('Pérdida (cross-entropy)')
+plt.title('Curva de aprendizaje')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+```markdown
+## ✍️ 4. ¡Generación de texto!
+
+Ahora viene lo más divertido: ver qué ha aprendido el modelo.
+
+Vamos a darle un "prompt" (inicio de texto) y el modelo generará una continuación carácter a carácter.
+
+### 🎛️ Temperatura: el control de la creatividad
+
+- **Temperatura baja (0.5)**: el modelo es más seguro y repetitivo.
+- **Temperatura alta (1.5)**: el modelo es más creativo pero puede ser incoherente.
+- **Temperatura = 1.0**: el punto justo.
+
+¡Experimenta con diferentes valores!
+```
+
+```python
+# Celda 10: Generar texto
+def generar_texto(prompt, max_new_tokens=500, temperature=1.0):
+    """Genera texto a partir de un prompt"""
+    model.eval()
+    
+    # Convertir prompt a tokens
+    idx = torch.tensor([encode(prompt)], dtype=torch.long).to(device)
+    
+    # Generar
+    idx = model.generate(idx, max_new_tokens, temperature)
+    
+    # Decodificar
+    texto_generado = decode(idx[0].tolist())
+    return texto_generado
+
+
+# Celda 11: ¡Genera!
+prompt = "En un lugar de la Mancha, de cuyo nombre no quiero acordarme,"
+print("📝 Prompt:")
+print(prompt)
+print("\n" + "="*50)
+print("🤖 El modelo continúa:")
+print("="*50)
+
+# Prueba con diferentes temperaturas
+for temp in [0.8, 1.0, 1.2]:
+    print(f"\n--- Temperatura: {temp} ---")
+    resultado = generar_texto(prompt, max_new_tokens=300, temperature=temp)
+    print(resultado[:500])
+    print("...\n")
+```
+
+```markdown
+## 💬 5. ¡Chatea con tu modelo!
+
+Esta es la parte más interactiva. Ahora puedes **conversar** con tu modelo en la consola.
+
+Escribe un mensaje y el modelo responderá en el estilo del corpus que entrenaste.
+
+**Tips:**
+- Escribe frases completas.
+- Si usaste *El Quijote*, el modelo hablará como un caballero del Siglo de Oro.
+- Si usaste *El Conde de Montecristo*, sonará como una novela de aventuras del siglo XIX.
+- ¡Puedes preguntarle sobre el clima, pedirle consejo o que te cuente una historia!
+```
+
+```python
+# Celda 12: Conversación interactiva
+def chat_con_ia():
+    print("\n" + "="*60)
+    print("💬 ¡Bienvenido al chat con tu IA!")
+    print(f"   Estilo aprendido de: {corpus_seleccionado}")
+    print("   Escribe 'salir' para terminar la conversación.")
+    print("="*60 + "\n")
+    
+    historial = ""
+    
+    while True:
+        # Input del usuario
+        user_input = input("👤 Tú: ")
+        if user_input.lower() in ['salir', 'exit', 'quit']:
+            print("\n👋 ¡Hasta luego!")
+            break
+        
+        # Construir prompt con historial
+        prompt = historial + user_input + "\n"
+        
+        # Generar respuesta
+        respuesta = generar_texto(prompt, max_new_tokens=150, temperature=0.9)
+        
+        # Extraer solo la parte nueva (después del prompt)
+        respuesta = respuesta[len(prompt):]
+        
+        # Mostrar respuesta
+        print(f"\n🤖 IA: {respuesta}\n")
+        
+        # Actualizar historial
+        historial += user_input + "\n" + respuesta + "\n"
+
+# Descomenta la línea de abajo para ejecutar el chat
+# chat_con_ia()
+```
+
+```markdown
+## 🧠 6. Experimenta y modifica
+
+¡Ahora es tu turno! Prueba a modificar estos parámetros y observa cómo cambia el comportamiento:
+
+### 🔧 Hiperparámetros del modelo (Celda 5)
+- `block_size`: aumenta a 256 → más contexto, pero más lento.
+- `n_embd`: aumenta a 256 → más capacidad, pero más lento.
+- `n_layer`: aumenta a 6 → más profundidad, pero más lento.
+
+### 🎛️ Parámetros de entrenamiento (Celda 8)
+- `learning_rate`: 1e-4 → más lento pero más estable; 5e-4 → más rápido pero puede divergir.
+- `max_iters`: 10000 → más entrenamiento, mejor resultado (pero tarda más).
+
+### 🎨 Temperatura (Celda 10)
+- 0.5 → muy predecible, aburrido.
+- 1.5 → muy creativo, a veces sin sentido.
+
+### 📚 Cambia el corpus (Celda 2)
+- Prueba con "montecristo" o con tu propio archivo de texto.
+
+---
+
+## 📚 Resumen: ¿Qué has aprendido?
+
+1. **Tokenización**: cómo convertir texto en números.
+2. **Arquitectura Transformer**: atención, embeddings, feed-forward.
+3. **Entrenamiento**: cómo un modelo aprende minimizando el error.
+4. **Generación**: cómo un modelo produce texto nuevo.
+5. **Temperatura**: cómo controlar la creatividad.
+
+---
+
+## 🏁 ¡Felicidades!
+
+Has construido tu propio GPT desde cero. No es tan grande como ChatGPT, pero tiene **la misma arquitectura** y ahora entiendes cómo funciona por dentro.
+
+**¿Qué sigue?**
+- Prueba con tu propio texto (una novela, un discurso, tus apuntes).
+- Aumenta el tamaño del modelo y entrena más tiempo.
+- Investiga cómo funciona la tokenización BPE (la que usa ChatGPT).
+
+---
+
+📖 **Volver al capítulo:** *Historia de la Inteligencia Artificial y el Dataverso* — Capítulo 3
+```
+
+---
+
+## 📁 Corpus
+
+### `corpus/quijote.txt`
+
+**Fuente:** Project Gutenberg (dominio público)  
+**URL:** https://www.gutenberg.org/ebooks/2000.txt.utf-8  
+**Contenido:** Texto completo de *Don Quijote de la Mancha* de Miguel de Cervantes.
+
+### `corpus/montecristo.txt`
+
+**Fuente:** Internet Archive (dominio público)  
+**URL:** https://archive.org/details/el-conde-de-monte-cristo-de-alexandre-dumas-pdf  
+**Contenido:** Texto completo de *El Conde de Montecristo* de Alexandre Dumas.
+
+### `corpus/prueba.txt`
+
+```
+Este es un texto de prueba para el mini-GPT. Es bastante corto, así que el modelo aprenderá rápido pero no desarrollará un estilo muy rico. Sirve para comprobar que todo funciona antes de entrenar con un corpus más grande. La idea es que puedas hacer una prueba rápida en pocos minutos y ver que el modelo realmente está aprendiendo a predecir la siguiente letra. Cuando estés seguro de que todo funciona, cambia al Quijote o al Conde de Montecristo y observa cómo el modelo desarrolla un estilo literario mucho más rico y complejo.
+```
+
+---
+
+## 📄 `requirements.txt`
+
+```
+torch>=2.0.0
+matplotlib>=3.5.0
+requests>=2.28.0
+numpy>=1.24.0
+```
+
+---
+
+## 📄 `LICENSE`
+
+```
+MIT License
+
+Copyright (c) 2026 [Tu nombre]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+## 📍 Ubicación en el capítulo
+
+Este proyecto se coloca al final de la **Sección 8: Modelos de Lenguaje Masivos**, justo después del texto que ya escribimos sobre **"Crisis de Datos y Datos Sintéticos"** y **"Modelos Open-Weight y SLMs"**, y antes del **"📊 DATO IMPACTANTE"** original.
+
+La estructura final de la Sección 8 quedaría así:
+
+```
+Sección 8: Modelos de Lenguaje Masivos — El Salto Exponencial
+├── GPT-2 y GPT-3
+├── Escala de parámetros
+├── GPT-4, GPT-4o y la Revolución Multimodal (NUEVO)
+├── Capacidades emergentes
+├── Modelos de Razonamiento (o1, DeepSeek R1) (NUEVO)
+├── La Crisis de los Datos y los Datos Sintéticos (NUEVO)
+├── Modelos Open-Weight y SLMs (NUEVO)
+├── ⚙️ PROYECTO PRÁCTICO: Entrena tu propio GPT (NUEVO)  ← AQUÍ
+│   ├── ¿Qué vas a construir?
+│   ├── El repositorio: "Mi primer GPT"
+│   ├── Enlace al notebook de Colab
+│   ├── ¿Qué esperar? (tiempos, resultados, limitaciones)
+│   └── 🧠 SIMULACIÓN MENTAL: ¿Qué está pasando dentro del modelo?
+├── 📊 DATO IMPACTANTE (original adaptado)
+├── ⏸️ PAUSA PARA REFLEXIONAR (original adaptada)
+└── 🔗 CONEXIÓN CON EL DATAVERSO (original adaptada)
+```
+
+---
+
+## 📝 Texto de introducción para el capítulo
+
+Este es el párrafo que conecta el contenido teórico con el proyecto práctico:
+
+> **⚙️ PROYECTO PRÁCTICO: Entrena tu propio GPT**
+>
+> Hasta ahora hemos hablado de modelos con cientos de miles de millones de parámetros. Pero, ¿y si pudieras construir uno tú mismo, aunque sea diminuto? No para competir con ChatGPT, sino para **ver con tus propios ojos** cómo funciona la magia de la atención y el entrenamiento.
+>
+> Hemos preparado un repositorio en GitHub llamado **"Mi Primer GPT"** al que puedes acceder desde el código QR o el enlace al final de esta sección. Allí encontrarás un notebook de Google Colab listo para ejecutar. Con él podrás:
+>
+> 1. **Elegir un corpus:** Entrenarás tu modelo con *El Quijote*, *El Conde de Montecristo*, o un texto de prueba.
+> 2. **Construir el modelo:** El código te guiará para armar un pequeño Transformer, capa por capa.
+> 3. **Entrenar y conversar:** Verás cómo el modelo, que al principio solo genera texto aleatorio, comienza a aprender el estilo y el vocabulario de la obra que elegiste. Al final, podrás chatear con él en la consola.
+>
+> El proyecto está diseñado para ejecutarse completamente en Google Colab, sin necesidad de instalar nada en tu computadora. Solo necesitas una cuenta de Google y curiosidad.
+>
+> **🔗 Repositorio:** `https://github.com/tu-usuario/mi-primer-gpt`
+>
+> **📓 Abrir en Colab:** `https://colab.research.google.com/github/tu-usuario/mi-primer-gpt/blob/main/notebooks/Mi_primer_GPT.ipynb`
+
+---
+
+## 🎯 Resumen de entregables para el editor
+
+| Elemento | Estado | Notas |
+|----------|--------|-------|
+| `README.md` | ✅ Completado | Explicación completa del proyecto |
+| `Mi_primer_GPT.ipynb` | ✅ Completado | Notebook con 12 celdas, código comentado en español |
+| `corpus/quijote.txt` | ✅ Disponible | Dominio público, Project Gutenberg |
+| `corpus/montecristo.txt` | ✅ Disponible | Dominio público, Internet Archive |
+| `corpus/prueba.txt` | ✅ Completado | Texto corto para pruebas |
+| `requirements.txt` | ✅ Completado | Dependencias mínimas |
+| `LICENSE` | ✅ Completado | MIT License |
+| Texto de introducción | ✅ Completado | Para integrar en el capítulo |
+
+---
+
+¿Necesitas que ajuste algún detalle del código, que añada más corpus, o que desarrolle algún otro componente del proyecto?
