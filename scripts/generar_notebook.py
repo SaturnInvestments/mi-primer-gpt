@@ -640,7 +640,7 @@ def generar_texto(prompt: str, max_tokens: int, temp: float) -> str:
 resultado = generar_texto(prompt_inicial, caracteres_a_generar, temperatura)
 
 print("=" * 65)
-print(f"📝 Prompt inicial: \"{prompt_inicial}\"")
+print(f'📝 Prompt inicial: "{prompt_inicial}"')
 print(f"🎛️ Temperatura:    {temperatura}")
 print("-" * 65)
 print("🤖 Generación del MiniGPT:")
